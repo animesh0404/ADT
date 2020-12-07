@@ -48,10 +48,29 @@ void Insert(struct Array *a,int index,int x)
     }
 }
 
+//Function to Delete a key from any given valid index.
+int Delete(struct Array *arr,int index)
+{
+ int x = 0;
+ int i;
+ if(index >= 0 &&  index < arr->length)
+ {
+  x  = arr -> A[index];
+
+  for(i=index; i < arr->length-1;i++)
+       arr->A[i] = arr->A[i+1];
+  arr->length--;
+  return x;
+ }
+ return 0;
+}
+
+
 int main()
 {
     struct Array arr = {{2,4,6,7,8},5,10};
 
+    printf("\nAppending 34 at the end");
     Append(&arr,34);
     printf("\nAfter Appending");
     Display(arr);
@@ -59,6 +78,13 @@ int main()
     printf("\nInserting 21 at index 2");
     Insert(&arr,2,21);
     Display(arr);
+
+    printf("\nDeleting key at index 2");
+    Delete(&arr,2);
+    printf("\nAfter Deletion:");
+    Display(arr);
+
+
 
     return 0;
 }
