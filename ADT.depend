@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1607356305 source:/home/akm/Codeblocks/ADT/main.cpp
+	<iostream>
+	<string.h>
+
+1604505727 /home/akm/Codeblocks/ADT/include/Search.h
+
