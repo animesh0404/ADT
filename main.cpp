@@ -24,6 +24,8 @@ int  Delete(struct Array *,int);
 int  LinearSearch(struct Array,int);
 int  LinearSearchv1(struct Array *,int);
 int  LinearSearchv2(struct Array *,int);
+int  BinarySearch(struct Array, int);
+int  RBinSearch(struct Array,int,int,int);
 
 
 //Driver Code
@@ -46,8 +48,8 @@ int main()
     printf("\nAfter Deletion:");
     Display(arr);
 
-    printf("\nSearching for key: 6");
-    printf("\nFound at index: %d",LinearSearch(arr,6));
+    printf("\nSearching for key(Using Recursive Binary Search): 6");
+    printf("\nFound at index: %d",RBinSearch(arr,0,arr.length-1,6));
     printf("\nAfter Searching:");
     Display(arr);
 
@@ -154,6 +156,39 @@ int LinearSearchv2(struct Array *arr,int key)
     return -1;
 }
 
+int BinarySearch(struct Array arr,int key)
+{
+    int l,mid,h;
+    l = 0;
+    h = arr.length - 1;
+    while(l<=h)
+    {
+        mid = (l+h)/2;
+        if(key == arr.A[mid])
+            return mid;
+        else if(key < arr.A[mid])
+            h = mid -1;
+        else
+            l = mid +1;
+    }
+    return -1;
+}
+
+int RBinSearch(struct Array arr,int l,int h,int key)
+{
+    int mid;
+    while(l<=h)
+    {
+        mid = (l+h)/2;
+        if(key == arr.A[mid])
+            return mid;
+        else if(key < arr.A[mid])
+            return RBinSearch(arr,l,mid-1,key);
+        else
+            return RBinSearch(arr,mid+1,h,key);
+    }
+    return -1;
+}
 
 //Function to swap any two integer values.
 void intSwap(int *A,int *B)
