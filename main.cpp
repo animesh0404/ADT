@@ -4,10 +4,9 @@
 //All rights reserved, Copyright 2020
 */
 
-#include <iostream>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
 
-using namespace std;
 
 //Declrations
 struct Array{
@@ -26,10 +25,10 @@ int  LinearSearchv1(struct Array *,int);
 int  LinearSearchv2(struct Array *,int);
 int  BinarySearch(struct Array, int);
 int  RBinSearch(struct Array,int,int,int);
+int  Get(struct Array ,int);
 
 
 //Driver Code
-
 int main()
 {
     struct Array arr = {{2,4,6,7,8},5,10};
@@ -48,10 +47,7 @@ int main()
     printf("\nAfter Deletion:");
     Display(arr);
 
-    printf("\nSearching for key(Using Recursive Binary Search): 6");
-    printf("\nFound at index: %d",RBinSearch(arr,0,arr.length-1,6));
-    printf("\nAfter Searching:");
-    Display(arr);
+    printf("\nGetting/Accessing value at index 3: %d",Get(arr,3));
 
     return 0;
 }
@@ -196,4 +192,10 @@ void intSwap(int *A,int *B)
     int temp = *A;
     *A = *B;
     *B = temp;
+}
+
+int Get(struct Array a,int index)
+{
+    if(index>=0 && index<a.length)
+        return a.A[index];
 }
