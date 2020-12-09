@@ -27,6 +27,8 @@ int  BinarySearch(struct Array, int);
 int  RBinSearch(struct Array,int,int,int);
 int  Get(struct Array ,int);
 void Set(struct Array *,int,int);
+int  Max(struct Array);
+int  Min(struct Array);
 
 
 //Driver Code
@@ -50,9 +52,12 @@ int main()
 
     printf("\nGetting/Accessing value at index 3: %d",Get(arr,3));
 
-    printf("\nSetting a value 5 at index 2\n");
-    Set(&arr,2,5);
+    printf("\nSetting a value 99 at index 2\n");
+    Set(&arr,2,99);
     Display(arr);
+
+    printf("\nMaximum value in array is: %d", Max(arr));
+    printf("\nMinimum value in array is: %d", Min(arr));
 
     return 0;
 }
@@ -211,4 +216,30 @@ void Set(struct Array *a,int index,int x)
 {
     if(index>=0 && index < a->length)
         a->A[index] = x;
+}
+
+//Function to return the maximum value
+int Max(struct Array a)
+{
+    int i,mx = a.A[0];
+
+    for(i=1;i<a.length;i++)
+    {
+        if(a.A[i] > mx)
+            mx = a.A[i];
+    }
+    return mx;
+}
+
+//Function to return the minimum value
+int Min(struct Array a)
+{
+    int i,mn = a.A[0];
+
+    for(i=1;i<a.length;i++)
+    {
+        if(a.A[i] < mn)
+            mn = a.A[i];
+    }
+    return mn;
 }
