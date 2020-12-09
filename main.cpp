@@ -29,7 +29,8 @@ int  Get(struct Array ,int);
 void Set(struct Array *,int,int);
 int  Max(struct Array);
 int  Min(struct Array);
-
+int  Sum(struct Array);
+float  Avg(struct Array);
 
 //Driver Code
 int main()
@@ -58,7 +59,7 @@ int main()
 
     printf("\nMaximum value in array is: %d", Max(arr));
     printf("\nMinimum value in array is: %d", Min(arr));
-
+    printf("\nAvg. of all the elements: %f", Avg(arr));
     return 0;
 }
 
@@ -162,6 +163,8 @@ int LinearSearchv2(struct Array *arr,int key)
     return -1;
 }
 
+
+//Function's to search using log(n) time
 int BinarySearch(struct Array arr,int key)
 {
     int l,mid,h;
@@ -243,3 +246,21 @@ int Min(struct Array a)
     }
     return mn;
 }
+
+//Function to return sum of all the elements
+int Sum(struct Array a)
+{
+    int i,total = 0;
+    for(i=0;i<a.length;i++)
+        total += a.A[i];
+    return total;
+}
+
+//Function to return avg values
+float Avg(struct Array a)
+{
+    return (float) Sum(a) / a.length;
+}
+
+
+
