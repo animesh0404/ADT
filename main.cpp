@@ -26,6 +26,7 @@ int  LinearSearchv2(struct Array *,int);
 int  BinarySearch(struct Array, int);
 int  RBinSearch(struct Array,int,int,int);
 int  Get(struct Array ,int);
+void Set(struct Array *,int,int);
 
 
 //Driver Code
@@ -48,6 +49,10 @@ int main()
     Display(arr);
 
     printf("\nGetting/Accessing value at index 3: %d",Get(arr,3));
+
+    printf("\nSetting a value 5 at index 2\n");
+    Set(&arr,2,5);
+    Display(arr);
 
     return 0;
 }
@@ -194,8 +199,16 @@ void intSwap(int *A,int *B)
     *B = temp;
 }
 
+//Function to get a value from any valid index
 int Get(struct Array a,int index)
 {
     if(index>=0 && index<a.length)
         return a.A[index];
+}
+
+//Function to Set/Replace a value from any valid index
+void Set(struct Array *a,int index,int x)
+{
+    if(index>=0 && index < a->length)
+        a->A[index] = x;
 }
