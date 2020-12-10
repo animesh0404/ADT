@@ -5,7 +5,7 @@
 */
 
 #include<stdio.h>
-#include<string.h>
+#include<stdlib.h>
 
 
 //Declrations
@@ -28,9 +28,12 @@ int  RBinSearch(struct Array,int,int,int);
 int  Get(struct Array ,int);
 void Set(struct Array *,int,int);
 int  Max(struct Array);
-int  Min(struct Array);
-int  Sum(struct Array);
+int    Min(struct Array);
+int    Sum(struct Array);
 float  Avg(struct Array);
+void Reverse(struct Array *);
+void Reverse2(struct Array *);
+
 
 //Driver Code
 int main()
@@ -60,6 +63,11 @@ int main()
     printf("\nMaximum value in array is: %d", Max(arr));
     printf("\nMinimum value in array is: %d", Min(arr));
     printf("\nAvg. of all the elements: %f", Avg(arr));
+
+    printf("\nReversing the array:");
+    Reverse2(&arr);
+    Display(arr);
+
     return 0;
 }
 
@@ -262,5 +270,27 @@ float Avg(struct Array a)
     return (float) Sum(a) / a.length;
 }
 
+//Function to reverse array using aux. array.
+void Reverse(struct Array *a)
+{
+    int *B;
+    int i,j;
 
+    B = (int *) malloc(a->length * sizeof(int));
+
+    for(i=a->length-1, j=0; i>=0; i--,j++)
+        B[j] = a->A[i];
+
+    for(i=0;i<a->length;i++)
+        a->A[i]=B[i];
+}
+
+
+//Function to reverse array.
+void Reverse2(struct Array *a)
+{
+    int i,j;
+    for(j=a->length-1, i=0; i < (a->length)/2 ; i++,j--)
+        intSwap( &a->A[j], &a->A[i]);
+}
 
