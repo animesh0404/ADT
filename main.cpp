@@ -15,24 +15,28 @@ struct Array{
     int szie;
 };
 
-void intSwap(int *,int *);
-void Display(struct Array);
-void Append(struct Array *,int);
-void Insert(struct Array *,int,int);
-int  Delete(struct Array *,int);
-int  LinearSearch(struct Array,int);
-int  LinearSearchv1(struct Array *,int);
-int  LinearSearchv2(struct Array *,int);
-int  BinarySearch(struct Array, int);
-int  RBinSearch(struct Array,int,int,int);
-int  Get(struct Array ,int);
-void Set(struct Array *,int,int);
-int  Max(struct Array);
+void   intSwap(int *,int *);
+void   Display(struct Array);
+void   Append(struct Array *,int);
+void   Insert(struct Array *,int,int);
+int    Delete(struct Array *,int);
+int    LinearSearch(struct Array,int);
+int    LinearSearchv1(struct Array *,int);
+int    LinearSearchv2(struct Array *,int);
+int    BinarySearch(struct Array, int);
+int    RBinSearch(struct Array,int,int,int);
+int    Get(struct Array ,int);
+void   Set(struct Array *,int,int);
+int    Max(struct Array);
 int    Min(struct Array);
 int    Sum(struct Array);
 float  Avg(struct Array);
-void Reverse(struct Array *);
-void Reverse2(struct Array *);
+void   Reverse(struct Array *);
+void   Reverse2(struct Array *);
+void   LShift(struct Array *);
+void   LRotate(struct Array *);
+void   RShift(struct Array *);
+void   RRotate(struct Array *);
 
 
 //Driver Code
@@ -54,18 +58,8 @@ int main()
     printf("\nAfter Deletion:");
     Display(arr);
 
-    printf("\nGetting/Accessing value at index 3: %d",Get(arr,3));
-
-    printf("\nSetting a value 99 at index 2\n");
-    Set(&arr,2,99);
-    Display(arr);
-
-    printf("\nMaximum value in array is: %d", Max(arr));
-    printf("\nMinimum value in array is: %d", Min(arr));
-    printf("\nAvg. of all the elements: %f", Avg(arr));
-
-    printf("\nReversing the array:");
-    Reverse2(&arr);
+    printf("\nRight Rotate array:");
+    RRotate(&arr);
     Display(arr);
 
     return 0;
@@ -79,7 +73,7 @@ void Display(struct Array a)
 {
     int i;
     for(i=0;i<a.length;i++)
-        printf("\n%d",a.A[i]);\
+        printf(" %d ",a.A[i]);
     printf("\n");
 }
 
@@ -294,3 +288,73 @@ void Reverse2(struct Array *a)
         intSwap( &a->A[j], &a->A[i]);
 }
 
+
+//Function for Left shifting of elements
+void LShift(struct Array *a)
+{
+    int i;
+    int l = a->length;
+
+    if(l == 1)
+        a->A[l-1] = 0;
+
+    else if(l > 1)
+    {
+        for(i=1; i<l; i++)
+            a->A[i-1] = a->A[i];
+
+        a->A[l-1] = 0;
+    }
+}
+
+//Function for Left rotation of elements
+void LRotate(struct Array *a)
+{
+    int i,temp;
+    int l = a->length;
+
+    temp = a->A[0];
+
+    if(l > 0)
+    {
+        for(i=1; i<l; i++)
+            a->A[i-1] = a->A[i];
+
+        a->A[l-1] = temp;
+    }
+}
+
+//Function for Right shifting of elements
+void RShift(struct Array *a)
+{
+    int i;
+    int l = a->length;
+
+    if(l == 1)
+        a->A[0] = 0;
+
+    else if(l > 1)
+    {
+        for(i=l-2; i>=0; i--)
+            a->A[i+1] = a->A[i];
+
+        a->A[0] = 0;
+    }
+}
+
+//Function for Right rotation of elements
+void RRotate(struct Array *a)
+{
+    int i,temp;
+    int l = a->length;
+
+    temp = a->A[l-1];
+
+    if(l > 0)
+    {
+        for(i=l-2; i>=0; i--)
+            a->A[i+1] = a->A[i];
+
+        a->A[0] = temp;
+    }
+}
