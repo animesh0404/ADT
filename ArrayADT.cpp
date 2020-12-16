@@ -294,3 +294,49 @@ void RRotate(struct Array *a)
         a->A[0] = temp;
     }
 }
+
+//Function to insert element in a sorted array.
+void InsertinSortedArray(struct Array *arr,int x)
+{
+    int i = arr->length - 1;
+
+    //Check for Overflow
+    if(arr->length == arr->szie)
+      return;
+
+    while( i>=0 && arr->A[i] > x)
+    {
+        arr->A[i+1] = arr->A[i];
+        i--;
+    }
+    arr->A[i+1] = x;
+    arr->length++;
+}
+
+//Function for checking if the Array is sorted.
+int isSorted(struct Array a)
+{
+    int i;
+    for(i=0;i< a.length-1;i++)
+    {
+        if(a.A[i] > a.A[i+1])
+            return 0;
+    }
+    return 1;
+}
+
+
+//Function to arrange -ve elements to left.
+void Rearrange(struct Array *a)
+{
+    int i,j;
+    i = 0;
+    j = a->length - 1;
+
+    while(i<j)
+    {
+        while(a->A[i] < 0) i++;
+        while(a->A[j] > 0) j--;
+        if(i<j)            intSwap(&a->A[i], &a->A[j]);
+    }
+}

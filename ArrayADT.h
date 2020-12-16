@@ -31,4 +31,8 @@ void   LRotate(struct Array *);
 void   RShift(struct Array *);
 void   RRotate(struct Array *);
 
+void  InsertinSortedArray(struct Array *,int);
+int   isSorted(struct Array );
+void  Rearrange(struct Array *);
+
 #endif // ARRAYADT_H_INCLUDED
