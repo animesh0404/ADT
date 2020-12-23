@@ -3,7 +3,7 @@
 
 //Declrations
 struct Array{
-    int A[10];
+    int *A;
     int length;
     int szie;
 };

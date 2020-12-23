@@ -27,7 +27,13 @@ void Append(struct Array *a,int x)
 void Insert(struct Array *a,int index,int x)
 {
     int i;
-    if(index >=0 && index <= a->length)
+    if(a->length== 0)
+    {
+        a->A[index] = x;
+        a->length++;
+    }
+
+    else if(index >=0 && index <= a->length)
     {
         for(i=a->length; i>index; i--)
             a->A[i] = a->A[i-1];

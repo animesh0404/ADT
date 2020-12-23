@@ -5,57 +5,66 @@
 */
 
 #include<stdio.h>
+#include<stdlib.h>
 #include "ArrayADT.h"
 
 //Driver Code
 int main()
 {
-//    struct Array arr1 = {{2,6,10,15,25},10,10};
-//    struct Array arr2 = {{3,4,7,18,20},10,10};
-//    struct Array *arr3;
-  // struct Array arr = {{-6,3,-8,10,5,-7,-9,12,-4,2},10,10};
+    struct Array arr1;
+    char ch;
+    int x,index;
 
-//    printf("\nAppending 34 at the end");
-//    Append(&arr,34);
-//    printf("\nAfter Appending");
-//    Display(arr);
-//
-//    printf("\nInserting 21 at index 2");
-//    Insert(&arr,2,21);
-//    Display(arr);
-
-//    printf("\nDeleting key at index 2");
-//    printf("\nElement deleted: %d",Delete(&arr,2));
-//    printf("\nAfter Deletion:");
-//    Display(arr);
-//
-//    printf("\nRight Rotate array:");
-//    RRotate(&arr);
-//    Display(arr);
-
-//     InsertinSortedArray(&arr,3);
-//     Display(arr);
-//
-////     isSorted(arr) ? printf("\nSorted") : printf("\n Not Sorted");
+    printf("Enter Size of Array: ");
+    scanf("%d",&arr1.szie);
 
 
-//
-//    arr3 = Merge(&arr1,&arr2);
-//
-//    int i;
-//    for(i=0;i<arr3->length;i++)
-//        printf(" %d ",arr3->A[i]);
+    arr1.A = (int *)malloc(arr1.szie*sizeof(int));
+    arr1.length=0;
 
-        struct Array arr1={{2,9,21,28,35},10,5};
-struct Array arr2={{2,3,9,18,28},10,5};
-struct Array *arr3;
+    do
+    {
+        printf("\n\nMenu\n");
+        printf("1. Insert\n");
+        printf("2. Delete\n");
+        printf("3. Search\n");
+        printf("4. Sum\n");
+        printf("5. Display\n");
+        printf("6. Exit\n");
 
-arr3 = Difference(&arr1,&arr2);
-    int i;
-    for(i=0;i<arr3->length;i++)
-        printf(" %d ",arr3->A[i]);
+        printf("enter you choice: ");
+        scanf("%d",&ch);
 
 
+        switch(ch)
+        {
+         case 1:
+            printf("\nEnter (index,value): ");
+            scanf("%d%d",&index,&x);
+            Insert(&arr1,index,x);
+            break;
+
+         case 2:
+            printf("Enter index ");
+            scanf("%d",&index);
+            x=Delete(&arr1,index);
+            printf("Deleted Element is %d\n",x);
+            break;
+
+         case 3:printf("Enter element to search ");
+            scanf("%d",&x);
+            index=LinearSearch(arr1,x);
+            printf("Element index %d",index);
+            break;
+
+         case 4:printf("Sum is %d\n",Sum(arr1));
+            break;
+
+         case 5:
+            Display(arr1);
+            break;
+        }
+    }while(ch != 6);
     return 0;
 }
 

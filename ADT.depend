@@ -1,14 +1,15 @@
 # depslib dependency file v1.0
-1608653073 source:/home/akm/Codeblocks/ADT/main.cpp
+1608736553 source:/home/akm/Codeblocks/ADT/main.cpp
 	<stdio.h>
+	<stdlib.h>
 	"ArrayADT.h"
 
 1604505727 /home/akm/Codeblocks/ADT/include/Search.h
 
-1608653080 source:/home/akm/Codeblocks/ADT/ArrayADT.cpp
+1608736814 source:/home/akm/Codeblocks/ADT/ArrayADT.cpp
 	"ArrayADT.h"
 	<stdio.h>
 	<stdlib.h>
 
-1608653042 /home/akm/Codeblocks/ADT/ArrayADT.h
+1608736048 /home/akm/Codeblocks/ADT/ArrayADT.h
 
