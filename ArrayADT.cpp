@@ -340,3 +340,120 @@ void Rearrange(struct Array *a)
         if(i<j)            intSwap(&a->A[i], &a->A[j]);
     }
 }
+
+// Function to Merge two arrays
+struct Array* Merge(struct Array *arr1,struct Array *arr2)
+{
+ int i,j,k;
+ i=j=k=0;
+
+ struct Array *arr3 = (struct Array *) malloc(sizeof(struct Array));
+
+ while(i<arr1->length && j<arr2->length)
+ {
+     if(arr1->A[i] < arr2->A[j])
+        arr3->A[k++] = arr1->A[i++];
+     else
+        arr3->A[k++] = arr2->A[j++];
+ }
+
+  while(i<arr1->length)
+  {
+      arr3->A[k++] = arr1->A[i++];
+  }
+  while(j<arr2->length)
+  {
+      arr3->A[k++] = arr1->A[j++];
+  }
+
+  arr3->length = k;
+  arr3->szie = 10;
+
+  return arr3;
+}
+
+
+//Function to Union to arrays
+struct Array* Union(struct Array *arr1,struct Array *arr2)
+{
+  int i,j,k;
+  i=j=k=0;
+  struct Array *arr3 = (struct Array *)malloc(sizeof(struct Array));
+
+  while(i<arr1->length && j<arr2->length)
+  {
+   if(arr1->A[i]<arr2->A[j])
+     arr3->A[k++]=arr1->A[i++];
+   else if(arr2->A[j]<arr1->A[i])
+     arr3->A[k++]=arr2->A[j++];
+   else
+   {
+     arr3->A[k++]=arr1->A[i++];
+     j++;
+   }
+  }
+  for(;i<arr1->length;i++)
+       arr3->A[k++]=arr1->A[i];
+  for(;j<arr2->length;j++)
+       arr3->A[k++]=arr2->A[j];
+
+  arr3->length=k;
+   arr3->szie=10;
+return arr3;
+}
+
+
+//Function to perform Interstion
+struct Array* Intersection(struct Array *arr1,struct Array *arr2)
+{
+   int i,j,k;
+   i=j=k=0;
+   struct Array *arr3=(struct Array *)malloc(sizeof(struct Array));
+
+  while(i<arr1->length && j<arr2->length)
+  {
+   if(arr1->A[i]<arr2->A[j])
+        i++;
+   else if(arr2->A[j]<arr1->A[i])
+        j++;
+   else if(arr1->A[i]==arr2->A[j])
+   {
+    arr3->A[k++]=arr1->A[i++];
+    j++;
+   }
+  }
+  arr3->length=k;
+  arr3->szie=10;
+  return arr3;
+}
+
+
+struct Array* Difference(struct Array *arr1,struct Array *arr2)
+{
+  int i,j,k;
+  i=j=k=0;
+
+  struct Array *arr3=(struct Array *)malloc(sizeof(struct Array));
+
+  while(i<arr1->length && j<arr2->length)
+  {
+   if(arr1->A[i]<arr2->A[j])
+     arr3->A[k++]=arr1->A[i++];
+   else if(arr2->A[j]<arr1->A[i])
+     j++;
+   else
+    {
+      i++;
+      j++;
+    }
+
+  }
+
+  for(;i<arr1->length;i++)
+    arr3->A[k++]=arr1->A[i];
+
+  arr3->length=k;
+  arr3->szie=10;
+  return arr3;
+}
+

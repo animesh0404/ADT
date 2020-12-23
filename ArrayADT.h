@@ -34,5 +34,8 @@ void   RRotate(struct Array *);
 void  InsertinSortedArray(struct Array *,int);
 int   isSorted(struct Array );
 void  Rearrange(struct Array *);
-
+struct Array* Merge(struct Array *,struct Array *);
+struct Array* Union(struct Array *,struct Array *);
+struct Array* Intersection(struct Array *,struct Array *);
+struct Array* Difference(struct Array *,struct Array *);
 #endif // ARRAYADT_H_INCLUDED
