@@ -4,67 +4,82 @@
 //All rights reserved, Copyright 2020
 */
 
-#include<stdio.h>
+#include<iostream>
 #include<stdlib.h>
 #include "ArrayADT.h"
+
+using namespace std;
 
 //Driver Code
 int main()
 {
-    struct Array arr1;
     char ch;
+    int ele;
     int x,index;
 
-    printf("Enter Size of Array: ");
-    scanf("%d",&arr1.szie);
+    cout<<"\nEnter size of array: ";
+    cin>>ele;
 
-
-    arr1.A = (int *)malloc(arr1.szie*sizeof(int));
-    arr1.length=0;
+    Array arr(ele);
 
     do
     {
-        printf("\n\nMenu\n");
-        printf("1. Insert\n");
-        printf("2. Delete\n");
-        printf("3. Search\n");
-        printf("4. Sum\n");
-        printf("5. Display\n");
-        printf("6. Exit\n");
+        cout<<"\n\nMenu\n";
+        cout<<"1. Insert\n";
+        cout<<"2. Delete\n";
+        cout<<"3. Search\n";
+        cout<<"4. Sum\n";
+        cout<<"5. Display\n";
+        cout<<"6. Average\n";
+        cout<<"7. Exit\n";
 
-        printf("enter you choice: ");
-        scanf("%d",&ch);
+        cout<<"enter you choice: ";
+        cin>>ch;
 
 
         switch(ch)
         {
-         case 1:
-            printf("\nEnter (index,value): ");
-            scanf("%d%d",&index,&x);
-            Insert(&arr1,index,x);
+         case '1':
+            cout<<"\nEnter (index,value): ";
+            cin>>index>>x;
+            arr.Insert(index,x);
             break;
 
-         case 2:
-            printf("Enter index ");
-            scanf("%d",&index);
-            x=Delete(&arr1,index);
-            printf("Deleted Element is %d\n",x);
+         case '2':
+            cout<<"Enter index ";
+            cin>>index;
+            x=arr.Delete(index);
+            cout<<"Deleted Element is "<<x<<endl;
             break;
 
-         case 3:printf("Enter element to search ");
-            scanf("%d",&x);
-            index=LinearSearch(arr1,x);
-            printf("Element index %d",index);
+         case '3':
+            cout<<"Enter element to search ";
+            cin>>x;
+            index=arr.LinearSearch(x);
+            cout<<"Element index "<<index<<endl;
             break;
 
-         case 4:printf("Sum is %d\n",Sum(arr1));
+         case '4':
+             cout<<"Sum is "<<arr.Sum()<<endl;
             break;
 
-         case 5:
-            Display(arr1);
+         case '5':
+            arr.Display();
             break;
+
+         case '6':
+            cout<<"Avg is: "<<arr.Avg()<<endl;
+            break;
+
+         case '7':
+            break;
+
+         default:
+            cout<<"\n\n\t\tWRONG INPUT";
+            cin>>ele;
         }
-    }while(ch != 6);
+    }while(ch!='7');
+
     return 0;
 }
 
