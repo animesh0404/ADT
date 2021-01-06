@@ -17,17 +17,22 @@ struct String {
 int getLength(struct String);
 void initString(struct String *);
 void initString(struct String *,int);
-void setString(struct String *, char[],int);
+void setString(struct String *, char[]);
 void getString(struct String);
+//void chCaseAlt(struct String *);
+int countC(struct String);
+int countV(struct String str);
+int countW(struct String str);
 
 int main()
 {
     struct String name,msg;
     char *temp;
+     int i;
     initString(&name);
     initString(&msg);
 
-    setString(&name, "Animesh",7);
+    setString(&name, "If you practice everyday your hand becomes fine in whatever art you choose.");
 
 //    printf("\n Please enter your meassage: ");
 //    scanf("%s",&temp);
@@ -35,6 +40,13 @@ int main()
 
     printf("\n\nLength: %d",getLength(name));
 
+    getString(name);
+//    chCaseAlt(&name);
+    printf("\n\nConsonant Count: %d",countC(name));
+
+    printf("\n\nVowel Count: %d",countV(name));
+
+    printf("\n\nWord Count: %d",countW(name));
     getString(name);
 //    getString(msg);
 
@@ -57,15 +69,33 @@ void initString(struct String *a,int s)
     a->szie = s;
 }
 
+//Change Case to Alternative Case.
+//void chCaseAlt(struct String *str)
+//{
+//    int i;
+//    for(i=0; str->A[i] != '\0';i++)
+//    {
+//        if(str->A[i] >= 'A' && str->A[i] <= 'Z')
+//        {
+//            str->A[i] = str->A[i] + 32;
+//        }
+//        else if(str->A[i] >= 'a' && str->A[i] <= 'z')
+//        {
+//            str->A[i] = str->A[i] - 32;
+//        }
+//    }
+//}
 
 int getLength(struct String n)
 {
  return n.length;
 }
 
-void setString(struct String *a,char n[],int l)
+void setString(struct String *a,char n[])
 {
+    int l;
     a->A = n;
+    for(l=0;a->A[l] != '\0';l++);
     a->length = l;
 }
 
@@ -73,6 +103,50 @@ void getString(struct String a)
 {
     printf("\n%s", a.A);
 }
+
+int countC(struct String str)
+{
+ int i,cCount = 0;
+ for(i=0;str.A[i] != '\0';i++)
+ {
+     if(str.A[i] == 'a'||str.A[i] == 'e'||str.A[i] == 'i'||str.A[i] == 'o'||str.A[i] == 'u'||
+        str.A[i] == 'A'||str.A[i] == 'E'||str.A[i] == 'I'||str.A[i] == 'O'||str.A[i] == 'U') {}
+
+     else if((str.A[i] >= 'A' && str.A[i] <='Z')||(str.A[i] >= 'a' && str.A[i] <= 'z'))
+     {
+         cCount++;
+     }
+ }
+ return cCount;
+}
+
+int countV(struct String str)
+{
+ int i,vCount = 0;
+ for(i=0;str.A[i] != '\0';i++)
+ {
+     if(str.A[i] == 'a'||str.A[i] == 'e'||str.A[i] == 'i'||str.A[i] == 'o'||str.A[i] == 'u'||
+        str.A[i] == 'A'||str.A[i] == 'E'||str.A[i] == 'I'||str.A[i] == 'O'||str.A[i] == 'U')
+        {
+            vCount++;
+        }
+     else if((str.A[i] >= 'A' && str.A[i] <='Z')||(str.A[i] >= 'a' && str.A[i] <= 'z')){}
+ }
+ return vCount;
+}
+
+int countW(struct String str)
+{
+ int i,wCount = 0;
+ for(i=0;str.A[i] != '\0';i++)
+ {
+    if(str.A[i] == ' ' && str.A[i-1] != ' ')
+        wCount++;
+ }
+ wCount++;
+ return wCount;
+}
+
 ////Driver Code
 //int main()
 //{
